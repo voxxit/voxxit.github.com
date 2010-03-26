@@ -1,85 +1,62 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Josh Delsman on GitHub</title>
-	
-	<script type="text/javascript">
-	  function write_email(){ document.write([">", "a", "/", "<", "m", "o", "c", ".", "t", "i", "x", "x", "o", "v", "@", "n", "a", "m", "s", "l", "e", "d", "j", ">", "\"", "m", "o", "c", ".", "t", "i", "x", "x", "o", "v", "@", "n", "a", "m", "s", "l", "e", "d", "j", ":", "o", "t", "l", "i", "a", "m", "\"", "=", "f", "e", "r", "h", " ", "a", "<"].reverse().join('')); }
-	</script>
-	<style type="text/css">
-	  
-	  body,html { margin: 30px 0 0; padding: 0; color: #666; text-align: center; font-family: "Georgia", sans-serif; }
-	  h1, h2, h3, p { font-weight: normal; margin: 25px 0; padding: 0; }
-	  h1, h2 { color: #c20000; }
-	  h2 a { color: #c20000; }
-	  p { text-transform: uppercase; }
-	  p a { color: #333; }
-	  
-	  #projects { background-color: #c20000; color: #fff; border-top: 3px solid #dedede; border-bottom: 3px solid #dedede; margin: 15px 0; padding: 15px 0; }
-	  #projects fieldset { padding: 20px 0 0; width: 650px; margin: 0 auto; border: 0; border-top: 1px solid #e20000; }
-	  #projects legend { padding: 0 10px; }
-	  #projects ul { margin: 0; padding: 0; list-style-type: none; font-size: 12px; }
-	  #projects li { padding-bottom: 10px; }
-	  #projects a { color: #fff; }
-	  
-	  #links { font-weight: normal; font-size: 14px; list-style-type: none; margin: 20px 0 0; padding: 0; }
-	  #links li { display: inline; }
-	  #links li:after { content: " | ";}
-	  #links li:last-child:after { content: ""; }
-	  #links li a { color: #c20000; }
-	  
-	  #logo { margin: 30px 0; }
-	  
-	  #twitter_div { width: 650px; margin: 0 auto 30px; }
-	  #twitter_div a { color: #c20000; }
-	  #twitter_div #twitter_update_list { list-style-type: none; border-top: 1px solid #dedede; margin: 0 0 15px; padding: 0; }
-	  #twitter_div #twitter_update_list li { border-bottom: 1px solid #dedede; padding: 10px 0; font-size: 12px; }
-	  #twitter_div #twitter_link { display: block; clear: both; margin: 25px 0 25px; }
-	</style>
+  <title>Josh Delsman on GitHub</title>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />  
+  <link rel="stylesheet" href="stylesheets/style.min.css" type="text/css" media="all" charset="utf-8" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script type="text/javascript" src="javascripts/scripts.min.js"></script>
 </head>
-
 <body>
+  <div id="frame-placeholder"></div>
+  <script>
+    CFInstall.check({
+      node: "frame-placeholder",
+      destination: "http://voxxit.github.com/"
+    });
+  </script>
 
-  <p>This is the <a href="http://voxxit.github.com">GitHub Page</a> for</p>
+  <p>This is the <a href="/">GitHub Page</a> for</p>
   <h1>Josh Delsman</h1>
   <p>who can be reached via e-mail at</p>
   <h2><script type="text/javascript">write_email();</script></h2>
   
-  <div id="google-voice">
-    <object type="application/x-shockwave-flash" data="https://clients4.google.com/voice/embed/webCallButton" width="230" height="85"><param name="movie" value="https://clients4.google.com/voice/embed/webCallButton" /><param name="wmode" value="transparent" /><param name="FlashVars" value="id=613f5e458f0419563397adf96fb6ff3f11b336dd&style=0" /></object>
+  <div id="nav">
+    <div id="curriculum-vitae" class="nav-item">
+      <a href="resume.pdf">View My CV/Resume</a>
+    </div>
+    <div id="google-voice" class="nav-item">
+      <object type="application/x-shockwave-flash" data="https://clients4.google.com/voice/embed/webCallButton" width="230" height="85"><param name="movie" value="https://clients4.google.com/voice/embed/webCallButton" /><param name="wmode" value="transparent" /><param name="FlashVars" value="id=613f5e458f0419563397adf96fb6ff3f11b336dd&style=0" /></object>
+    </div>
+    <div id="linked-in" class="nav-item">
+      <a href="http://uk.linkedin.com/in/joshdelsman">
+        <img src="images/btn_viewmy_160x25.gif" width="160" height="25" border="0" alt="View Josh Delsman's profile on LinkedIn" />
+      </a>
+    </div>
+    <div class="clear"></div>    
   </div>
-  
-  <h2 class="sidebar-title"><a href="resume.pdf">View My CV/Resume</a></h2>
   
   <div id="projects">
     <fieldset>
       <legend>Active Open-Source Projects</legend>
       <ul>
         <li><strong><a href="http://github.com/ultraspeed/epp">epp</a></strong> &mdash; a Ruby wrapper for the EPP protocol; used with domain registries</li>
+        <li><strong><a href="http://github.com/voxxit/opensrs">opensrs</a></strong> &mdash; Provides support to utilise the OpenSRS XML API with Ruby/Rails.</li>
+        <li><strong><a href="http://github.com/voxxit/cpanel">cpanel</a></strong> &mdash; cPanel connection wrapper for Ruby.</li>
         <li><strong><a href="http://github.com/voxxit/universal_ruby_whois">universal_ruby_whois</a> (forked from <a href="http://github.com/mlightner/universal_ruby_whois">mlightner</a>)</strong> &mdash; a pure Ruby WHOIS script for blissful domain checking</li>
-        <li><strong><a href="http://github.com/voxxit/directadmin_rails_plugin">directadmin_rails_plugin</a></strong> &mdash; a Rails plugin for accessing the DirectAdmin API easily</li>
+        <li><strong><a href="http://github.com/voxxit/directadmin-rails-plugin">directadmin_rails_plugin</a></strong> &mdash; a Rails plugin for accessing the DirectAdmin API easily</li>
         <li><strong><a href="http://github.com/voxxit/money">money</a></strong> (forked from <a href="http://github.com/FooBarWidget/money">FooBarWidget</a>)</strong> &mdash; a Rails plugin/Ruby gem which handles currency and money formats. I added the ability to use different symbols when formatting your Money objects.</li>
       </ul>
     </fieldset>
   </div>
         
-  <div id="twitter_div">
-    <h2 class="sidebar-title"><a href="http://twitter.com/voxxit">My Twitter Updates</a></h2>
-    <ul id="twitter_update_list"></ul>
-    
-    <div id="twitter-button">
-      <a href="http://twitter.com/voxxit" id="twitter-link" style="display:block;">
-        <img src="twitter-black.png" border="0" alt="Follow me on Twitter!" />
-      </a>
-    </div>
+  <div id="twitter-div">
+    <h2 class="sidebar-title"><a href="http://twitter.com/voxxit">Follow Me On Twitter</a></h2>
+    <div id="twitter-update-list"></div>
   </div>
   
   <h2 class="sidebar-title"><a href="http://tastyrails.com/">Read My Blog, Tasty Rails</a></h2>
 
-  <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
   <script type="text/javascript" src="http://twitter.com/statuses/user_timeline/voxxit.json?callback=twitterCallback2&amp;count=10"></script>
 </body>
 </html>
