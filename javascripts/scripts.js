@@ -1,58 +1,76 @@
-function write_email(){ 
-  document.write([">", "a", "/", "<", "t", "i", ".", "x", "x", "o", "v", "@", "n", "a", "m", "s", "l", "e", "d", "j", ">", "\"", "t", "i", ".", "x", "x", "o", "v", "@", "n", "a", "m", "s", "l", "e", "d", "j", ":", "o", "t", "l", "i", "a", "m", "\"", "=", "f", "e", "r", "h", " ", "a", "<"].reverse().join('')); 
+// Twitter
+function time_ago_in_words(from) {
+  return distance_of_time_in_words(new Date().getTime(), Date.parse(from));
 }
-
-var _gaq = _gaq || [];
-
-_gaq.push(['_setAccount', 'UA-489504-10']);
-_gaq.push(['_trackPageview']);
-
-(function(){
-  var ga = document.createElement('script');
-  
-  ga.type = 'text/javascript'; 
-  ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
-})();
-
-function twitterCallback2(twitters) {
-  var statusHTML = [];
-  for (var i = 0; i < twitters.length; i++){
-    var username = twitters[i].user.screen_name;
-    var status = twitters[i].text.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function(url){
-      return '<a href="' + url + '">' + url + '</a>';
-    }).replace(/\B@([_a-z0-9]+)/ig, function(reply) {
-      return reply.charAt(0) + '<a href="http://twitter.com/' + reply.substring(1) + '" class="twitter-reply">' + reply.substring(1) + '</a>';
-    });
-    
-    statusHTML.push('<div class="twitter-update"><div class="twitter-status">' + status + '</div><div class="twitter-updated-at"><a href="http://twitter.com/' + username + '/statuses/' + twitters[i].id + '">' + relative_time(twitters[i].created_at) + '</a></div><div class="clear"></div></div>');
+function distance_of_time_in_words(to, from) {
+  seconds_ago = ((to - from) / 1000);
+  minutes_ago = Math.floor(seconds_ago / 60);
+  if (minutes_ago == 0) {
+    return "less than a minute";
   }
-  document.getElementById('twitter-update-list').innerHTML = statusHTML.join('');
-}
- 
-function relative_time(time_value) {
-  var values = time_value.split(" ");
-  time_value = values[1] + " " + values[2] + ", " + values[5] + " " + values[3];
-  var parsed_date = Date.parse(time_value);
-  var relative_to = (arguments.length > 1) ? arguments[1] : new Date();
-  var delta = parseInt((relative_to.getTime() - parsed_date) / 1000);
-  delta = delta + (relative_to.getTimezoneOffset() * 60);
- 
-  if (delta < 60) {
-    return 'less than a minute ago';
-  } else if(delta < 120) {
-    return 'about a minute ago';
-  } else if(delta < (60*60)) {
-    return (parseInt(delta / 60)).toString() + ' minutes ago';
-  } else if(delta < (120*60)) {
-    return 'about an hour ago';
-  } else if(delta < (24*60*60)) {
-    return 'about ' + (parseInt(delta / 3600)).toString() + ' hours ago';
-  } else if(delta < (48*60*60)) {
-    return '1 day ago';
-  } else {
-    return (parseInt(delta / 86400)).toString() + ' days ago';
+  if (minutes_ago == 1) {
+    return "a minute";
   }
+  if (minutes_ago < 45) {
+    return minutes_ago + " minutes";
+  }
+  if (minutes_ago < 90) {
+    return " about 1 hour";
+  }
+  hours_ago = Math.round(minutes_ago / 60);
+  if (minutes_ago < 1440) {
+    return "about " + hours_ago + " hours";
+  }
+  if (minutes_ago < 2880) {
+    return "1 day";
+  }
+  days_ago = Math.round(minutes_ago / 1440);
+  if (minutes_ago < 43200) {
+    return days_ago + " days";
+  }
+  if (minutes_ago < 86400) {
+    return "about 1 month";
+  }
+  months_ago = Math.round(minutes_ago / 43200);
+  if (minutes_ago < 525960) {
+    return months_ago + " months";
+  }
+  if (minutes_ago < 1051920) {
+    return "about 1 year";
+  }
+  years_ago = Math.round(minutes_ago / 525960);
+  return "over " + years_ago + " years";
 }
+twttr.anywhere(function (T) {
+  T.User.find("voxxit").timeline().first(5).each(function (tweet) {
+    if (tweet.text !== undefined) {
+      var tweet_html = '<div class="tweet">';
+      var link_regex = /((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/gi;
+      tweet_html += tweet.text.replace(link_regex, '<a href="$1">$1</a>');
+      tweet_html += '<div class="tweet_hours">';
+      tweet_html += '<a href="http://www.twitter.com/';
+      tweet_html += 'voxxit/status/' + tweet.id + '">';
+      tweet_html += '<time>' + time_ago_in_words(tweet.createdAt) + ' ago</time><\/a><\/div>';
+      tweet_html += '<\/div>';
+      $('#tweet-container').append(tweet_html);
+      T.hovercards();
+    }
+  });
+  T("#follow-button").followButton("voxxit");
+  T.hovercards();
+});
+window.fbAsyncInit = function () {
+  FB.init({
+    appId: '113988508662719',
+    status: true,
+    cookie: true,
+    xfbml: true
+  });
+};
+(function () {
+  var e = document.createElement('script');
+  e.type = 'text/javascript';
+  e.src = "http://connect.facebook.net/en_US/all.js";
+  e.async = true;
+  document.getElementById('fb-root').appendChild(e);
+}());
