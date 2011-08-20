@@ -1,61 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Josh Delsman on GitHub</title>
-  <meta http-equiv="X-UA-Compatible" content="chrome=1" />  
-  
-  <link rel="stylesheet" href="stylesheets/style.min.css" type="text/css" media="all" charset="utf-8" />
-  <link rel="openid2.provider" href="https://www.google.com/accounts/o8/ud?source=profiles" /> 
-  <link rel="openid2.local_id" href="http://www.google.com/profiles/voxxit" />
-  
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  <script type="text/javascript" src="http://platform.twitter.com/anywhere.js?id=jKnuYk8A8VEbYDG9mwXUg&amp;v=1"></script>
-  <script type="text/javascript">
-    var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-489504-10"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)})();
-  </script>
-</head>
-<body>
-  <p>This is the <a href="/">GitHub Page</a> for</p>
-  <h1>Josh Delsman <span id="follow-button"></span></h1>
-  
-  <div id="nav">
-    <div id="curriculum-vitae" class="nav-item">
-      <a href="resume.pdf">View My CV/Resume</a>
-    </div>
-    <div id="google-voice" class="nav-item">
-      <object type="application/x-shockwave-flash" data="https://clients4.google.com/voice/embed/webCallButton" width="230" height="85"><param name="movie" value="https://clients4.google.com/voice/embed/webCallButton" /><param name="wmode" value="transparent" /><param name="FlashVars" value="id=613f5e458f0419563397adf96fb6ff3f11b336dd&style=0" /></object>
-    </div>
-    <div id="linked-in" class="nav-item">
-      <a href="http://uk.linkedin.com/in/joshdelsman">
-        <img src="images/btn_viewmy_160x25.gif" width="160" height="25" border="0" alt="View Josh Delsman's profile on LinkedIn" />
-      </a>
-    </div>
-    <div class="clear"></div>    
-  </div>
-  
-  <div id="projects">
-    <fieldset>
-      <legend>Active Open-Source Projects</legend>
-      <ul>
-        <li><strong><a href="http://github.com/ultraspeed/epp">epp</a></strong> &mdash; a Ruby wrapper for the EPP protocol; used with domain registries</li>
-        <li><strong><a href="http://github.com/voxxit/opensrs">opensrs</a></strong> &mdash; Provides support to utilise the OpenSRS XML API with Ruby/Rails.</li>
-        <li><strong><a href="http://github.com/voxxit/cpanel">cpanel</a></strong> &mdash; cPanel connection wrapper for Ruby.</li>
-        <li><strong><a href="http://github.com/voxxit/universal_ruby_whois">universal_ruby_whois</a> (forked from <a href="http://github.com/mlightner/universal_ruby_whois">mlightner</a>)</strong> &mdash; a pure Ruby WHOIS script for blissful domain checking</li>
-        <li><strong><a href="http://github.com/voxxit/directadmin-rails-plugin">directadmin_rails_plugin</a></strong> &mdash; a Rails plugin for accessing the DirectAdmin API easily</li>
-        <li><strong><a href="http://github.com/voxxit/money">money</a></strong> (forked from <a href="http://github.com/FooBarWidget/money">FooBarWidget</a>)</strong> &mdash; a Rails plugin/Ruby gem which handles currency and money formats. I added the ability to use different symbols when formatting your Money objects.</li>
-      </ul>
-    </fieldset>
-  </div>
+---
+layout: default
+title: Home
+---
 
-  <fb:like-box href="http://www.facebook.com/joshdelsman" connections="25" stream="false" header="false" width="630"></fb:like-box>
-        
-  <div id="tweet-container">
-    <h2>Latest Tweets</h2>
-  </div>
-  
-  <div id="fb-root"></div>
-  
-  <script type="text/javascript" src="javascripts/scripts.min.js"></script>
-  <div id="fb-root"></div>
-</body>
-</html>
+<h3>Blog Posts</h3>
+<ul class="posts">
+  {% for post in site.posts %}
+  <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+
+<h3>Projects</h3>
+<ul class="projects">
+  <li><strong><a href="http://myhurricane.net">MyHurricane</a></strong> &mdash; desktop and mobile cyclone tracking; written in node.js and Redis</li>
+  <li><strong><a href="http://github.com/voxxit/epp">epp</a></strong> &mdash; a Ruby wrapper for the EPP protocol; used with domain registries</li>
+  <li><strong><a href="http://github.com/voxxit/opensrs">opensrs</a></strong> &mdash; Provides support to utilize the OpenSRS XML API with Ruby</li>
+  <li><strong><a href="http://github.com/voxxit/cpanel">cpanel</a></strong> &mdash; cPanel connection wrapper for Ruby</li>
+</ul>
